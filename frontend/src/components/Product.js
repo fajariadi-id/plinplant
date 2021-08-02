@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import {
   Container,
@@ -6,8 +6,29 @@ import {
   SearchBar,
   SectionProduct,
 } from './styles/Product.element';
+import axios from 'axios';
 
 const Product = () => {
+  const [plants, setPlants] = useState([]);
+
+  // const baseUrl = 'https://plinplant-server.herokuapp.com';
+
+  useEffect(() => {
+    const fetchPlants = async () => {
+      try {
+        const res = await axios.get(
+          'https://plinplant-server.herokuapp.com/api/plants'
+        );
+
+        console.log('DATA', res);
+      } catch (error) {
+        console.log('EROR', error);
+      }
+    };
+
+    fetchPlants();
+  }, []);
+
   return (
     <SectionProduct>
       <Container>
