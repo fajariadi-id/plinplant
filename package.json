@@ -1,0 +1,42 @@
+{
+  "name": "plinplant",
+  "version": "1.0.0",
+  "description": "MERN Plant Education & One Stop Shopping",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fajariadi-id/plinplant.git"
+  },
+  "keywords": [
+    "ensiklopedia",
+    "tanaman",
+    "hias",
+    "pemeliharaan",
+    "tanaman"
+  ],
+  "author": "Adhika Adhiwijna, Fajar Riadi, Hanendyo Indira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fajariadi-id/plinplant/issues"
+  },
+  "homepage": "https://github.com/fajariadi-id/plinplant#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.12"
+  }
+}
