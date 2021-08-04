@@ -11,8 +11,6 @@ export const getArticles = (callback) => {
 export const postArticle = (body, callback) => {
   const sql = `insert into table_article(article_image, title, author, created_at, duration, source, url, content) values(?, ?, ?, ?, ?, ?, ?, ?)`;
 
-  console.log('servi', body);
-
   const column = [
     body.article_image,
     body.title,

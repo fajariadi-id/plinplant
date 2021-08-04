@@ -153,12 +153,12 @@ const Cards = ({
         </CardProductShop>
       )} */}
 
-      {/* {illustration && (
+      {illustration && (
         <CardValueProps>
           <img src={img} alt='' />
           <h5>{name}</h5>
         </CardValueProps>
-      )} */}
+      )}
 
       {/* {review && (
         <CardReview>
@@ -501,15 +501,15 @@ const CardProductLandingPage = styled.div`
 //   }
 // `;
 
-// const CardValueProps = styled.div`
-//   &:not(:last-of-type) {
-//     margin-right: 10px;
-//   }
+const CardValueProps = styled.div`
+  &:not(:last-of-type) {
+    margin-right: 10px;
+  }
 
-//   & > img {
-//     margin-bottom: 10px;
-//   }
-// `;
+  & > img {
+    margin-bottom: 10px;
+  }
+`;
 
 // const CardProductShop = styled.div`
 //   background-color: ${colors.lightGreenTransparent};

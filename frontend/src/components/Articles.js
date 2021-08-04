@@ -25,9 +25,10 @@ const NewsHeader = () => {
     // if (articles.length < 4) setScroll(false);
     // if (articles.length > 3) setScroll(true);
     const fetchArticles = async () => {
-      const res = await axios.get('http://localhost:5000/api/articles');
+      const res = await axios.get(
+        'https://plinplant-server.herokuapp.com/api/articles'
+      );
       setArticleIdState(res.data.data);
-      console.log('DATA', res.data.data);
     };
 
     fetchArticles();

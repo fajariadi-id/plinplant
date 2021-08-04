@@ -16,7 +16,6 @@ export const articles = (req, res) => {
 
 export const articleInput = (req, res) => {
   const body = req.body;
-  console.log('BODY', body);
 
   postArticle(body, (err, result) => {
     if (err) {
