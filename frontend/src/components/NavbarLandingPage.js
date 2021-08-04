@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import colors from '../constant/colors';
 import { Container, LinksContainer, Logo, Nav } from './styles/Navbar.element';
 import { FaShoppingCart } from 'react-icons/fa';
 import Button from './Button';
 
 const NavbarLandingPage = () => {
+  const [shadow, setShadow] = useState(false);
+
+  useEffect(() => {
+    // ::: NAVBAR INTERACTION :::
+    const scrollNav = () => {
+      const navbarHeight = 100;
+      window.pageYOffset > navbarHeight ? setShadow(true) : setShadow(false);
+    };
+
+    window.addEventListener('scroll', scrollNav);
+
+    return () => {
+      window.removeEventListener('scroll', scrollNav);
+    };
+    // ::: END OF NAVBAR INTERACTION :::
+  }, []);
+
   return (
-    <Nav>
-      <Container>
+    <Nav shadow={shadow}>
+      <Container shadow={shadow}>
         <Logo>PlinPlant</Logo>
 
         <LinksContainer>

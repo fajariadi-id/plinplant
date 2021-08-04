@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import {
   Container,
@@ -6,33 +6,47 @@ import {
   SearchBar,
   SectionProduct,
 } from './styles/Product.element';
-import axios from 'axios';
 import ProductsContainer from './ProductsContainer';
-
-const api = axios.create({
-  baseURL: 'https://plinplant-server.herokuapp.com',
-});
+import { getPlants } from '../context/actions';
+import { Context } from '../context/store';
 
 const Product = () => {
-  const [plants, setPlants] = useState([]);
+  const [search, setSearch] = useState('');
 
-  // const baseUrl = 'https://plinplant-server.herokuapp.com';
+  const { plantsState, plantsDispatch } = useContext(Context);
 
   useEffect(() => {
-    const fetchPlants = async () => {
-      try {
-        const res = await api.get('/api/plants');
-
-        setPlants(res.data.data);
-      } catch (error) {
-        console.log('EROR', error);
-      }
-    };
-
-    fetchPlants();
+    plantsDispatch(getPlants());
   }, []);
 
-  const plantCategory = plants
+  // :::::::::::::::::::::: SEARCHING FILTER ::::::::::::::::::::::
+  const searching = search
+    .toLowerCase()
+    .split('')
+    .filter((item) => item.trim())
+    .join('');
+
+  const searchedProduct = plantsState.map((plant) =>
+    plant.plant_name
+      .toLowerCase()
+      .split('')
+      .filter((plant) => plant.trim())
+      .join('')
+  );
+
+  const searched = searchedProduct.map((item) => item.includes(searching));
+
+  const plantSearched = plantsState.filter((plant) =>
+    plant.plant_name
+      .toLowerCase()
+      .split('')
+      .filter((plant) => plant.trim())
+      .join('')
+      .includes(searching)
+  );
+
+  // :::::::::::::::::::::: CATEGORY FILTER ::::::::::::::::::::::
+  const plantCategory = plantsState
     .map((plant) => plant.category_name)
     .filter((plant, index, arr) => arr.indexOf(plant) === index);
 
@@ -45,8 +59,8 @@ const Product = () => {
           <div>
             <input
               type='text'
-              // value={search}
-              // onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder='Contoh: Aglonema'
             />
 
@@ -57,14 +71,28 @@ const Product = () => {
         </SearchBar>
 
         <ProductSlider>
-          {plantCategory.map((category, index) => (
-            <ProductsContainer
-              slider
-              res={plants}
-              category={category}
-              key={index}
-            />
-          ))}
+          {search ? (
+            <>
+              {searched.includes(true) ? (
+                <ProductsContainer search={search} plants={plantSearched} />
+              ) : (
+                <p style={{ textAlign: 'center' }}>
+                  Mohon maaf, tanaman yang Anda cari belum tersedia.
+                </p>
+              )}
+            </>
+          ) : (
+            <>
+              {plantCategory.map((category, index) => (
+                <ProductsContainer
+                  slider
+                  plants={plantsState}
+                  category={category}
+                  key={index}
+                />
+              ))}
+            </>
+          )}
         </ProductSlider>
       </Container>
     </SectionProduct>

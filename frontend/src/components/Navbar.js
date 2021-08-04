@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaChevronLeft, FaShoppingCart } from 'react-icons/fa';
 import colors from '../constant/colors';
 import Button from './Button';
@@ -11,9 +11,26 @@ import {
 } from './styles/Navbar.element';
 
 const Navbar = () => {
+  const [shadow, setShadow] = useState(false);
+
+  useEffect(() => {
+    // ::: NAVBAR INTERACTION :::
+    const scrollNav = () => {
+      const navbarHeight = 100;
+      window.pageYOffset > navbarHeight ? setShadow(true) : setShadow(false);
+    };
+
+    window.addEventListener('scroll', scrollNav);
+
+    return () => {
+      window.removeEventListener('scroll', scrollNav);
+    };
+    // ::: END OF NAVBAR INTERACTION :::
+  }, []);
+
   return (
-    <Nav>
-      <Container>
+    <Nav shadow={shadow}>
+      <Container shadow={shadow}>
         <Home to='/'>
           <FaChevronLeft className='icon' />
           <p>Halaman Utama</p>

@@ -104,7 +104,7 @@ const Cards = ({
         </CardProductLandingPage>
       )}
 
-      {/* {search && (
+      {search && (
         <CardProductSearched>
           <span>{name}</span>
 
@@ -128,7 +128,7 @@ const Cards = ({
 
           <img src={process.env.PUBLIC_URL + `/images/Plant/${img}`} alt='' />
         </CardProductSearched>
-      )} */}
+      )}
 
       {/* {scroll && (
         <CardProductShop>
@@ -492,14 +492,14 @@ const CardProductLandingPage = styled.div`
   }
 `;
 
-// const CardProductSearched = styled(CardProductLandingPage)`
-//   margin: 5px;
+const CardProductSearched = styled(CardProductLandingPage)`
+  margin: 5px;
 
-//   & > img {
-//     width: 300px;
-//     /* max-width: 500px; */
-//   }
-// `;
+  & > img {
+    width: 300px;
+    /* max-width: 500px; */
+  }
+`;
 
 const CardValueProps = styled.div`
   &:not(:last-of-type) {

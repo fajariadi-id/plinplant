@@ -9,6 +9,7 @@ import colors from '../constant/colors';
 // import { ContextStore } from '../../../../../context/store/ContextStore';
 
 const ProductsContainer = ({
+  plants,
   category,
   slider,
   scroll,
@@ -59,15 +60,6 @@ const ProductsContainer = ({
     if (isPhone) return 1;
   };
 
-  // const productSearched = tablePlantState.filter((item) =>
-  //   item.plant_name
-  //     .toLowerCase()
-  //     .split('')
-  //     .filter((item) => item.trim())
-  //     .join('')
-  //     .includes(searching)
-  // );
-
   return (
     <>
       {slider && (
@@ -85,7 +77,7 @@ const ProductsContainer = ({
             chevronWidth={chevronWidth}
             // infiniteLoop
           >
-            {res
+            {plants
               .filter((item) => category === item.category_name)
               .map(({ plant_name, plant_image, pk_plant_id }) => (
                 <Cards
@@ -130,12 +122,12 @@ const ProductsContainer = ({
         </CardContainer>
       )} */}
 
-      {/* {search && (
+      {search && (
         <SearchedContainer>
           <h4>Hasil Pencarian: {search}</h4>
 
           <div>
-            {productSearched.map(({ plant_name, plant_image, pk_plant_id }) => (
+            {plants.map(({ plant_name, plant_image, pk_plant_id }) => (
               <Cards
                 search
                 name={plant_name}
@@ -146,7 +138,7 @@ const ProductsContainer = ({
             ))}
           </div>
         </SearchedContainer>
-      )} */}
+      )}
 
       {/* {scroll && (
         <ShopRelated>
@@ -426,19 +418,31 @@ const CardContainer = styled.article`
   }
 `;
 
-// const SearchedContainer = styled.div`
-//   & > h4 {
-//     color: ${colors.white};
-//     margin-bottom: 20px;
-//     text-align: center;
-//   }
+const SearchedContainer = styled.div`
+  & > h4 {
+    color: ${colors.white};
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
-//   & > div {
-//     display: flex;
-//     justify-content: center;
-//     flex-wrap: wrap;
-//   }
-// `;
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-gap: 5px; */
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 760px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+`;
 
 // const ShopRelated = styled.div`
 //   width: fit-content;

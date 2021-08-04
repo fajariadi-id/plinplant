@@ -5,7 +5,6 @@ import {
   ScrollBtn,
   Typography,
 } from './styles/Header.element';
-import {} from '../';
 import { FaChevronDown } from 'react-icons/fa';
 
 const Header = () => {
