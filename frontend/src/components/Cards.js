@@ -11,6 +11,7 @@ import { FaCheck, FaCircle, FaRegTrashAlt } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useHistory } from 'react-router-dom';
 import colors from '../constant/colors';
+import slug from '../constant/slug';
 // import { priceFormat, weightFormat } from '../../constant/constantVariables';
 // import { deleteCart } from '../../../context/actions/fetchingActions';
 // import { getPlantId } from '../../../context/actions/modalActions';
@@ -72,8 +73,6 @@ const Cards = ({
 
   const isMini = useMediaQuery({ maxWidth: 370 });
 
-  const slug = (title) => title.toLowerCase().split(' ').join('-');
-
   return (
     <>
       {slider && (
@@ -89,13 +88,13 @@ const Cards = ({
               <Button card text='Beli' bgColor={colors.green} />
               {/* </Link> */}
 
-              {/* <Link to={`/ensiklopedia/${id}/${slug(name)}`}> */}
-              <Button
-                card
-                text='Ensiklopedia'
-                bgColor={colors.lightGreenTransparent}
-              />
-              {/* </Link> */}
+              <Link to={`/ensiklopedia/${id}/${slug(name)}`}>
+                <Button
+                  card
+                  text='Ensiklopedia'
+                  bgColor={colors.lightGreenTransparent}
+                />
+              </Link>
             </div>
             {/* END OF BUTTON CONTAINER */}
           </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import {
   Container,
@@ -7,17 +7,12 @@ import {
   SectionProduct,
 } from './styles/Product.element';
 import ProductsContainer from './ProductsContainer';
-import { getPlants } from '../context/actions';
 import { Context } from '../context/store';
 
 const Product = () => {
   const [search, setSearch] = useState('');
 
-  const { plantsState, plantsDispatch } = useContext(Context);
-
-  useEffect(() => {
-    plantsDispatch(getPlants());
-  }, []);
+  const { plantsState } = useContext(Context);
 
   // :::::::::::::::::::::: SEARCHING FILTER ::::::::::::::::::::::
   const searching = search

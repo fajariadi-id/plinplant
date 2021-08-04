@@ -1,15 +1,20 @@
 import React, { createContext } from 'react';
 import { useThunkReducer } from 'react-hook-thunk-reducer';
-import { plantsReducer } from './reducers';
+import { plantReducer, plantsReducer } from './reducers';
 
 export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
-  // ::: FETCH TABLE PLANT :::
+  // ::: FETCH PLANTS :::
   const [plantsState, plantsDispatch] = useThunkReducer(plantsReducer, []);
 
+  // ::: FETCH PLANT :::
+  const [plantState, plantDispatch] = useThunkReducer(plantReducer, {});
+
   return (
-    <Context.Provider value={{ plantsState, plantsDispatch }}>
+    <Context.Provider
+      value={{ plantsState, plantsDispatch, plantState, plantDispatch }}
+    >
       {children}
     </Context.Provider>
   );

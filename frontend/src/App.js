@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ArticlePage from './pages/ArticlePage';
-import ArticleCMS from './pages/cms/ArticleCMS';
 
 import LandingPage from './pages/LandingPage';
+import EncyclopediaPage from './pages/EncyclopediaPage';
+import { Context } from './context/store';
+import { getPlants } from './context/actions';
 
 function App() {
+  const { plantsDispatch } = useContext(Context);
+
+  useEffect(() => {
+    plantsDispatch(getPlants());
+  }, [plantsDispatch]);
+
   return (
     <Router>
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <Route path='/articles' component={ArticlePage} />
-
-        <Route path='/cms/articles' component={ArticleCMS} />
+        <Route path='/ensiklopedia/:id/:name' component={EncyclopediaPage} />
       </Switch>
     </Router>
   );

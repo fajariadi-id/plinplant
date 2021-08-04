@@ -29,15 +29,6 @@ const ProductsContainer = ({
   transactionState,
   res,
 }) => {
-  // const {
-  //   tablePlantState,
-  //   tableArticleState,
-  //   plantReviewState,
-  //   userCartState,
-  //   userAddressState,
-  //   invoiceState,
-  // } = useContext(ContextStore);
-
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 50;
 
@@ -92,7 +83,7 @@ const ProductsContainer = ({
         </CardContainer>
       )}
 
-      {/* {related && (
+      {related && (
         <CardContainer>
           <h4 style={{ textAlign: 'center' }}>Tanaman Terkait</h4>
 
@@ -107,7 +98,7 @@ const ProductsContainer = ({
             chevronWidth={chevronWidth}
             // infiniteLoop
           >
-            {tablePlantState
+            {plants
               .filter((item) => category === item.category_name)
               .map(({ plant_name, plant_image, pk_plant_id }) => (
                 <Cards
@@ -120,7 +111,7 @@ const ProductsContainer = ({
               ))}
           </ItemsCarousel>
         </CardContainer>
-      )} */}
+      )}
 
       {search && (
         <SearchedContainer>

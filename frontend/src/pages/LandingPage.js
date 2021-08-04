@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import HeaderLanding from '../components/HeaderLanding';
 import NavbarLandingPage from '../components/NavbarLandingPage';
 import Product from '../components/Product';
 import ValueProportion from '../components/ValueProportion';
 
 const LandingPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <>
       <NavbarLandingPage />
-      <Header />
+      <HeaderLanding />
       <main>
         <Product />
         <ValueProportion />

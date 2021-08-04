@@ -4,10 +4,10 @@ import {
   HeaderTag,
   ScrollBtn,
   Typography,
-} from './styles/Header.element';
+} from './styles/HeaderLand.element';
 import { FaChevronDown } from 'react-icons/fa';
 
-const Header = () => {
+const HeaderLanding = () => {
   return (
     <HeaderTag>
       <Container>
@@ -36,4 +36,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderLanding;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import StyledContainer from '../../constant/StyledContainer';
 import colors from '../../constant/colors';
+import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
   background-color: #254c50f2;
@@ -201,7 +202,7 @@ export const LinksContainer = styled.ul`
   } */
 `;
 
-export const Home = styled.a`
+export const Home = styled(Link)`
   display: flex;
   align-items: center;
 
