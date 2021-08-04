@@ -7,6 +7,11 @@ import {
   SectionProduct,
 } from './styles/Product.element';
 import axios from 'axios';
+import ProductsContainer from './ProductsContainer';
+
+const api = axios.create({
+  baseURL: 'https://plinplant-server.herokuapp.com',
+});
 
 const Product = () => {
   const [plants, setPlants] = useState([]);
@@ -16,11 +21,9 @@ const Product = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const res = await axios.get(
-          'https://plinplant-server.herokuapp.com/api/plants'
-        );
+        const res = await api.get('/api/plants');
 
-        console.log('DATA', res);
+        setPlants(res.data.data);
       } catch (error) {
         console.log('EROR', error);
       }
@@ -28,6 +31,10 @@ const Product = () => {
 
     fetchPlants();
   }, []);
+
+  const plantCategory = plants
+    .map((plant) => plant.category_name)
+    .filter((plant, index, arr) => arr.indexOf(plant) === index);
 
   return (
     <SectionProduct>
@@ -50,9 +57,14 @@ const Product = () => {
         </SearchBar>
 
         <ProductSlider>
-          {/* {productsCategory.map((category, index) => (
-            <ProductsContainer slider category={category} key={index} />
-          ))} */}
+          {plantCategory.map((category, index) => (
+            <ProductsContainer
+              slider
+              res={plants}
+              category={category}
+              key={index}
+            />
+          ))}
         </ProductSlider>
       </Container>
     </SectionProduct>
