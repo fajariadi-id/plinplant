@@ -1,4 +1,6 @@
 import React from 'react';
+import CallToAction from '../components/CallToAction';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import NavbarLandingPage from '../components/NavbarLandingPage';
 import Product from '../components/Product';
@@ -12,7 +14,9 @@ const LandingPage = () => {
       <main>
         <Product />
         <ValueProportion />
+        <CallToAction />
       </main>
+      <Footer />
     </>
   );
 };
