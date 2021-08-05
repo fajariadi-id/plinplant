@@ -10,6 +10,7 @@ import colors from '../constant/colors';
 
 const ProductsContainer = ({
   plants,
+  reviews,
   category,
   slider,
   scroll,
@@ -147,9 +148,9 @@ const ProductsContainer = ({
         </ShopRelated>
       )}
 
-      {/* {review && (
+      {review && (
         <ReviewContainer>
-          {plantReviewState.map(
+          {reviews.map(
             ({
               pk_review_id,
               picture,
@@ -171,7 +172,7 @@ const ProductsContainer = ({
             )
           )}
         </ReviewContainer>
-      )} */}
+      )}
 
       {/* {cart && (
         <CartContainer>

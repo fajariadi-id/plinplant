@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import { useThunkReducer } from 'react-hook-thunk-reducer';
-import { plantReducer, plantsReducer } from './reducers';
+import { plantReducer, plantsReducer, reviewsReducer } from './reducers';
 
 export const Context = createContext();
 
@@ -11,9 +11,19 @@ const ContextProvider = ({ children }) => {
   // ::: FETCH PLANT :::
   const [plantState, plantDispatch] = useThunkReducer(plantReducer, {});
 
+  // ::: FETCH PLANT REVIEWS :::
+  const [reviewsState, reviewsDispatch] = useThunkReducer(reviewsReducer, []);
+
   return (
     <Context.Provider
-      value={{ plantsState, plantsDispatch, plantState, plantDispatch }}
+      value={{
+        plantsState,
+        plantsDispatch,
+        plantState,
+        plantDispatch,
+        reviewsState,
+        reviewsDispatch,
+      }}
     >
       {children}
     </Context.Provider>

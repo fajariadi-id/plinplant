@@ -12,3 +12,10 @@ export const getPlant = (id) => async (dispatch) => {
 
   dispatch({ type: 'GET_PLANT', payload: res.data.data[0] });
 };
+
+// :::::::::::::::::::::::::::::: PLANTS ::::::::::::::::::::::::::::::
+export const getReviews = (id) => async (dispatch) => {
+  const res = await api.get(`/api/reviews/${id}`);
+
+  dispatch({ type: 'GET_REVIEWS', payload: res.data.data });
+};

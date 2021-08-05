@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 // import { colors } from '../../constant/style';
 import Button from './Button';
-// import Rating from '../../../master/components/additional/Rating';
 // import Quantity from './Quantity';
 import { FaCheck, FaCircle, FaRegTrashAlt } from 'react-icons/fa';
 // import StatusOrder from './StatusOrder';
@@ -12,6 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Link, useHistory } from 'react-router-dom';
 import colors from '../constant/colors';
 import slug from '../constant/slug';
+import Rating from './Rating';
 // import { priceFormat, weightFormat } from '../../constant/constantVariables';
 // import { deleteCart } from '../../../context/actions/fetchingActions';
 // import { getPlantId } from '../../../context/actions/modalActions';
@@ -159,7 +159,7 @@ const Cards = ({
         </CardValueProps>
       )}
 
-      {/* {review && (
+      {review && (
         <CardReview>
           <div>
             <h6>{name}</h6>
@@ -179,7 +179,7 @@ const Cards = ({
 
           <Rating rate={rating} />
         </CardReview>
-      )} */}
+      )}
 
       {/* {cart && (
         <CardCart>
@@ -542,55 +542,55 @@ const CardProductShop = styled.div`
   }
 `;
 
-// const CardReview = styled.div`
-//   background-color: ${colors.lightGreenTransparent};
-//   padding: 10px 20px 15px;
-//   border-radius: 10px;
-//   position: relative;
+const CardReview = styled.div`
+  background-color: ${colors.lightGreenTransparent};
+  padding: 10px 20px 15px;
+  border-radius: 10px;
+  position: relative;
 
-//   &:not(:last-of-type) {
-//     margin-bottom: 15px;
-//   }
+  &:not(:last-of-type) {
+    margin-bottom: 15px;
+  }
 
-//   & > div {
-//     margin-left: 30px;
+  & > div {
+    margin-left: 30px;
 
-//     & > h6 {
-//       color: ${colors.white};
-//       width: 100%;
-//       max-width: 140px;
+    & > h6 {
+      color: ${colors.white};
+      width: 100%;
+      max-width: 140px;
 
-//       @media (max-width: 1200px) {
-//         max-width: 100%;
-//       }
+      @media (max-width: 1200px) {
+        max-width: 100%;
+      }
 
-//       @media (max-width: 576px) {
-//         max-width: 170px;
-//       }
-//     }
+      @media (max-width: 576px) {
+        max-width: 170px;
+      }
+    }
 
-//     & > span {
-//       font-size: 12px;
-//       display: block;
-//       margin-bottom: 10px;
-//     }
-//   }
+    & > span {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
 
-//   & > p {
-//     font-size: 14px;
-//   }
+  & > p {
+    font-size: 14px;
+  }
 
-//   & > img {
-//     position: absolute;
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 50%;
-//     top: -8px;
-//     left: -8px;
-//     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
-//     object-fit: cover;
-//   }
-// `;
+  & > img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: -8px;
+    left: -8px;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+  }
+`;
 
 // const CardCart = styled.div`
 //   display: flex;

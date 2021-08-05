@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import colors from '../constant/colors';
 import {
   ButtonCart,
@@ -19,6 +19,7 @@ import { useMediaQuery } from 'react-responsive';
 import slug from '../constant/slug';
 import priceFormat from '../constant/priceFormat';
 import Quantity from './Quantity';
+import ScrollSign from './ScrollSign';
 
 const Shop = () => {
   // ::: HIGHLIGHT PRODUCT :::
@@ -30,7 +31,10 @@ const Shop = () => {
   const [youngQuantity, setYoungQuantity] = useState(1);
   const [matureQuantity, setMatureQuantity] = useState(1);
 
-  const { plantsState, plantState } = useContext(Context);
+  // ::: SCROLL SIGN :::
+  const [scroll, setScroll] = useState(true);
+
+  const { plantsState, plantState, reviewsState } = useContext(Context);
   const {
     pk_plant_id,
     plant_name,
@@ -42,24 +46,29 @@ const Shop = () => {
     tuber_price,
     teen_price,
     mature_price,
-    seed_stock,
-    tuber_stock,
-    teen_stock,
-    mature_stock,
+    // seed_stock,
+    // tuber_stock,
+    // teen_stock,
+    // mature_stock,
     seed_weight,
     tuber_weight,
     young_weight,
     mature_weight,
   } = plantState;
 
+  useEffect(() => {
+    if (reviewsState.length < 6) setScroll(false);
+    if (reviewsState.length > 5) setScroll(true);
+  }, [reviewsState]);
+
   const isIpad = useMediaQuery({ maxWidth: 900 });
   const isPhone = useMediaQuery({ maxWidth: 576 });
 
-  // const rate = plantReviewState
-  //   .map((review) => review.rating)
-  //   .reduce((a, b) => a + b, 0);
+  const rate = reviewsState
+    .map((review) => review.rating)
+    .reduce((a, b) => a + b, 0);
 
-  // const ratingAvg = rate === 0 ? 0 : rate / plantReviewState.length;
+  const ratingAvg = rate === 0 ? 0 : rate / reviewsState.length;
 
   return (
     <main
@@ -88,7 +97,7 @@ const Shop = () => {
             </>
           )}
 
-          {/* <ScrollSign center /> */}
+          <ScrollSign center />
         </RelatedProduct>
 
         <Product>
@@ -172,7 +181,7 @@ const Shop = () => {
                 <div>
                   <span>
                     <FaStar className='star' />{' '}
-                    {/* {ratingAvg === 0 ? 0 : ratingAvg.toFixed(1)} */}0
+                    {ratingAvg === 0 ? 0 : ratingAvg.toFixed(1)}
                   </span>
 
                   {highlight === 'Biji' && (
@@ -327,20 +336,16 @@ const Shop = () => {
 
         <ReviewContainer>
           <h5>Ulasan</h5>
-          {/* {plantReviewState.length === 0 ? (
+          {reviewsState.length === 0 ? (
             <p>
               Ayo, jadi orang pertama yang memberikan ulasan untuk tanaman
               favoritmu!
             </p>
           ) : (
-            <ProductsContainer review />
-          )} */}
-          <p>
-            Ayo, jadi orang pertama yang memberikan ulasan untuk tanaman
-            favoritmu!
-          </p>
+            <ProductsContainer reviews={reviewsState} review />
+          )}
 
-          {/* {scroll && <ScrollSign center />} */}
+          {scroll && <ScrollSign center />}
         </ReviewContainer>
 
         {/* {userLoginState ? (
