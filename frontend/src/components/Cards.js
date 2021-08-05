@@ -84,9 +84,9 @@ const Cards = ({
 
             {/* BUTTON CONTAINER */}
             <div>
-              {/* <Link to={`/shop/${id}/${slug(name)}`}> */}
-              <Button card text='Beli' bgColor={colors.green} />
-              {/* </Link> */}
+              <Link to={`/belanja/${id}/${slug(name)}`}>
+                <Button card text='Beli' bgColor={colors.green} />
+              </Link>
 
               <Link to={`/ensiklopedia/${id}/${slug(name)}`}>
                 <Button
@@ -99,7 +99,7 @@ const Cards = ({
             {/* END OF BUTTON CONTAINER */}
           </div>
 
-          <img src={process.env.PUBLIC_URL + `/images/Plant/${img}`} alt='' />
+          <img src={`/images/Plant/${img}`} alt='' />
         </CardProductLandingPage>
       )}
 
@@ -111,7 +111,7 @@ const Cards = ({
             <h5>{name}</h5>
 
             <div>
-              <Link to={`/shop/${id}/${slug(name)}`}>
+              <Link to={`/belanja/${id}/${slug(name)}`}>
                 <Button card text='Beli' bgColor={colors.green} />
               </Link>
 
@@ -125,18 +125,18 @@ const Cards = ({
             </div>
           </div>
 
-          <img src={process.env.PUBLIC_URL + `/images/Plant/${img}`} alt='' />
+          <img src={`/images/Plant/${img}`} alt='' />
         </CardProductSearched>
       )}
 
-      {/* {scroll && (
+      {scroll && (
         <CardProductShop>
-          <img src={process.env.PUBLIC_URL + `/images/Plant/${img}`} alt='' />
+          <img src={`/images/Plant/${img}`} alt='' />
 
           <div>
             <h5>{name}</h5>
 
-            <Link to={`/shop/${id}/${slug(name)}`}>
+            <Link to={`/belanja/${id}/${slug(name)}`}>
               <Button primary shop text='Beli' bgColor={colors.green} />
             </Link>
 
@@ -150,7 +150,7 @@ const Cards = ({
             </Link>
           </div>
         </CardProductShop>
-      )} */}
+      )}
 
       {illustration && (
         <CardValueProps>
@@ -171,8 +171,8 @@ const Cards = ({
           <img
             src={
               !img
-                ? process.env.PUBLIC_URL + `/images/user_image/default.png`
-                : process.env.PUBLIC_URL + `/images/user_image/${img}`
+                ? `/images/user_image/default.png`
+                : `/images/user_image/${img}`
             }
             alt={name}
           />
@@ -184,7 +184,7 @@ const Cards = ({
       {/* {cart && (
         <CardCart>
           <img
-            src={process.env.PUBLIC_URL + `/images/Plant/${img}`}
+            src={`/images/Plant/${img}`}
             alt={name}
           />
 
@@ -209,7 +209,7 @@ const Cards = ({
       {/* {checkout && (
         <CardCheckout>
           <img
-            src={process.env.PUBLIC_URL + `/images/Plant/${img}`}
+            src={`/images/Plant/${img}`}
             alt={img}
           />
 
@@ -241,7 +241,7 @@ const Cards = ({
 
           <div>
             <img
-              src={process.env.PUBLIC_URL + `/images/Plant/${img}`}
+              src={`/images/Plant/${img}`}
               alt={name}
             />
 
@@ -302,12 +302,12 @@ const Cards = ({
         <CardInvoice>
           <div>
             <img
-              src={process.env.PUBLIC_URL + `/images/Plant/${img}`}
+              src={`/images/Plant/${img}`}
               alt={name}
             />
 
             <div>
-              <h6 onClick={() => history.push(`/shop/${plant}/${slug(name)}`)}>
+              <h6 onClick={() => history.push(`/belanja/${plant}/${slug(name)}`)}>
                 {name}
               </h6>
               <span>{phase}</span>
@@ -510,37 +510,37 @@ const CardValueProps = styled.div`
   }
 `;
 
-// const CardProductShop = styled.div`
-//   background-color: ${colors.lightGreenTransparent};
-//   display: flex;
-//   align-items: center;
-//   border-radius: 10px;
-//   overflow: hidden;
-//   width: 100%;
+const CardProductShop = styled.div`
+  background-color: ${colors.lightGreenTransparent};
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
 
-//   &:not(:last-of-type) {
-//     margin-bottom: 10px;
-//   }
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
 
-//   & > img {
-//     width: 100px;
-//     height: 100px;
-//     object-fit: cover;
-//     box-shadow: 7px 0 10px rgba(0, 0, 0, 0.1);
-//   }
+  & > img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    box-shadow: 7px 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-//   & > div {
-//     display: flex;
-//     flex-direction: column;
-//     padding: 0 10px;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
 
-//     & > h5 {
-//       color: ${colors.white};
-//       margin-bottom: 5px;
-//       font-size: 14px;
-//     }
-//   }
-// `;
+    & > h5 {
+      color: ${colors.white};
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+  }
+`;
 
 // const CardReview = styled.div`
 //   background-color: ${colors.lightGreenTransparent};

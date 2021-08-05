@@ -18,7 +18,7 @@ const CTAEncyclopedia = ({ id, name }) => {
           </p>
         </div>
 
-        <Link to={`/shop/${id}/${slug(name)}`}>
+        <Link to={`/belanja/${id}/${slug(name)}`}>
           <Button primary cta text='Beli Sekarang!' bgColor={colors.yellow} />
         </Link>
       </Container>

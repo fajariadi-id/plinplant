@@ -131,9 +131,9 @@ const ProductsContainer = ({
         </SearchedContainer>
       )}
 
-      {/* {scroll && (
+      {scroll && (
         <ShopRelated>
-          {tablePlantState
+          {plants
             .filter((item) => category === item.category_name)
             .map(({ plant_name, plant_image, pk_plant_id }) => (
               <Cards
@@ -145,7 +145,7 @@ const ProductsContainer = ({
               />
             ))}
         </ShopRelated>
-      )} */}
+      )}
 
       {/* {review && (
         <ReviewContainer>
@@ -435,45 +435,44 @@ const SearchedContainer = styled.div`
   }
 `;
 
-// const ShopRelated = styled.div`
-//   width: fit-content;
-//   border-radius: 10px;
-//   height: 470px;
-//   overflow-y: scroll;
+const ShopRelated = styled.div`
+  width: fit-content;
+  border-radius: 10px;
+  height: 470px;
+  overflow-y: scroll;
 
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-//   /* :: STYLING FOR SCROLL SIGN :: */
-//   &:hover {
-//     & ~ p {
-//       opacity: 1;
-//       transform: translateY(0);
-//       visibility: visible;
-//     }
-//   }
-// `;
+  /* :: STYLING FOR SCROLL SIGN :: */
+  &:hover {
+    & ~ p {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+`;
 
-// const ReviewContainer = styled.div`
-//   /* background-color: red; */
-//   height: 470px;
-//   padding: 8px 0 0 8px;
-//   border-radius: 20px 10px 10px 20px;
-//   overflow-y: scroll;
+const ReviewContainer = styled.div`
+  height: 470px;
+  padding: 8px 0 0 8px;
+  border-radius: 20px 10px 10px 20px;
+  overflow-y: scroll;
 
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-//   :hover {
-//     & ~ p {
-//       opacity: 1;
-//       transform: translateY(0);
-//       visibility: visible;
-//     }
-//   }
-// `;
+  :hover {
+    & ~ p {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+`;
 
 // const CartContainer = styled.div`
 //   border-radius: 10px;

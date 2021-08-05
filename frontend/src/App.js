@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import LandingPage from './pages/LandingPage';
 import EncyclopediaPage from './pages/EncyclopediaPage';
+import ShoppingPage from './pages/ShoppingPage';
+
 import { Context } from './context/store';
 import { getPlants } from './context/actions';
 
@@ -18,6 +20,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/ensiklopedia/:id/:name' component={EncyclopediaPage} />
+        <Route path='/belanja/:id/:name' component={ShoppingPage} />
       </Switch>
     </Router>
   );
